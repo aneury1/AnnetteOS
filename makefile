@@ -1,7 +1,7 @@
 ROOT_DIR=/home/aneury/Desktop/annetteOS/AnnetteOS
 INCLUDES_DIR=$(ROOT_DIR)/includes
 
-
+CPPPARAMS = -I$(INCLUDES_DIR) -ffreestanding -O2 -Wall -Wextra -fno-exceptions -fno-rtti
 GCCPARAMS = -m32  -I$(INCLUDES_DIR) -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
 ASPARAMS = --32
 LDPARAMS = -melf_i386
