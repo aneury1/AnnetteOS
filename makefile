@@ -6,8 +6,8 @@ GCCPARAMS = -m32  -I$(INCLUDES_DIR) -Iinclude -fno-use-cxa-atexit -nostdlib -fno
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
-CC=gcc
-AS=as
+CC=i686-elf-gcc
+AS=i686-elf-as
 
 TARGET = annette
 
