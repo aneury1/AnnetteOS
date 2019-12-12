@@ -8,16 +8,20 @@ LDPARAMS = -melf_i386
 
 CC=i686-elf-gcc
 AS=i686-elf-as
+LD_TOOL=i686-elf-ld
 
-TARGET = annette
+TARGET = annette.bin
+ISO_FILE = annette.iso
 
 objects= obj/gboot.o \
          obj/vconsole.o \
 		 obj/kernel.o
 
-all: $(objects)
+all: $(ISO_FILE) $(objects) $(TARGET)
 	@echo end building proccess...now linking to the elf
-	
+
+$(TARGET): linker.ld $(objects)
+	$(LD_TOOL) $(LDPARAMS) -T $< -o $@ $(objects)
 
 obj/%.o: src/boot/%.s
 	@mkdir -p $(@D)
@@ -31,3 +35,9 @@ obj/%.o: src/kernel/%.cpp
 
 clean:
 	rm $(objects)
+
+$(ISO_FILE):$(TARGET)
+	mkdir -p isodir/boot/grub
+	cp $(TARGET) isodir/boot/$(TARGET)
+	cp grub.cfg isodir/boot/grub/grub.cfg
+	grub-mkrescue -o $(ISO_FILE) isodir
