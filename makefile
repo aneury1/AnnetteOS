@@ -12,6 +12,7 @@ AS=as
 TARGET = annette
 
 objects= obj/gboot.o \
+         obj/vconsole.o \
 		 obj/kernel.o
 
 all: $(objects)
