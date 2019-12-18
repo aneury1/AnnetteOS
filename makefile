@@ -21,6 +21,7 @@ ISO_FILE = annette.iso
 
 objects= obj/gboot.o \
          obj/vconsole.o \
+		 obj/port.o \
 		 obj/GDT.o \
 		 obj/kernel.o 
 
@@ -46,6 +47,10 @@ obj/%.o: src/hardware/x86/%.cpp
 	@$(CC) $(GCCPARAMS) -c -o $@ $<
 	@echo compiling...$<
 
+obj/%.o: src/hardware/io/%.cpp
+	@mkdir -p $(@D)
+	@$(CC) $(GCCPARAMS) -c -o $@ $<
+	@echo compiling...$<
 
 clean:
 	rm $(objects)
