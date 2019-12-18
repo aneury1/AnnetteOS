@@ -1,10 +1,13 @@
 #include "gnu/gtypes.h"
 #include "kernel/vconsole.h"
 
+///by now
+#define __INTEL_CPU
+
 #ifdef __INTEL_CPU
 #include "hardware/x86/GDT.h"
 static void init_hw(){
-
+   GlobalDescriptorTable gdt_setup;
 }
 #else
 #warning "by now only intel would be supported"
