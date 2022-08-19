@@ -1,6 +1,6 @@
 ORG 0
 BITS 16
-; oxd
+; update
 _start:
 	jmp short start
 	nop
