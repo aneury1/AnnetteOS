@@ -27,6 +27,6 @@
 *.exe
 *.out
 *.app
-
+*.iso 
 
 cross/

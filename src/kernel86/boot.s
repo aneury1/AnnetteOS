@@ -16,10 +16,12 @@
 
 .section .text
 .extern kernelMain
+.extern call_in_stage_1
 .global loader
 
 loader: 
    mov $kernel_stack, %esp
+   call call_in_stage_1
    push %eax
    push %ebx
    call kernelMain

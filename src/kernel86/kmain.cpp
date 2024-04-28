@@ -1,17 +1,33 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
- 
+#include "kmain.h"
+#include "screen.h"
+#include "terminal.h"
 
-void kprintf(const char *buffer){
-	unsigned short* videoMemory = (unsigned short*)0xb8000;
-	for(int i=0; buffer[i]!='\0';i++){
-		videoMemory[i]= (videoMemory[i]& 0xFF00) | buffer[i];
-	}
+
+typedef void (*globalCalls)();
+extern "C" globalCalls start_ctors;
+extern "C" globalCalls end_ctors;
+
+extern "C" void call_in_stage_1(){
+	for(globalCalls* i =&start_ctors; *i!=end_ctors;i++)
+		(*i)();
 }
 
-extern "C" void kernelMain(void *multiboot_spc, unsigned int magic){
-  (void)multiboot_spc;
-  (void) magic;
-  kprintf("Annette Kernel v0.0.0.1");
+ 
+ 
+extern "C" void kernelMain(multiboot_info *multiboot_spc, unsigned int magic){
+    multiboot_spc;
+    magic;
+  terminal_initialize();
+  
+  kprintf("AnnetteOS V0.0.0.1\n");
+  terminal_setcolor(VGA_COLOR_BLUE);
+  kprintf("--------------------------------------------------\n");
+  terminal_setcolor(VGA_COLOR_LIGHT_MAGENTA);
+  kprintf("low_mem: %d\nhigh_memory: %d\n", multiboot_spc->low_mem, multiboot_spc->high_mem);
+
+
+  while(1);
 }

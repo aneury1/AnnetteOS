@@ -8,6 +8,8 @@ echo "Please move to make, cmake, premake..."
 # echo "Showing assembler version and compiling"
 rm *.o
 make -j
+rm *.o
+rm *.iso
 # $HOME/opt/cross/bin/$TARGET-as --version
 #echo "Compiling boot.s"
 #$HOME/opt/cross/bin/$TARGET-as ./boot.s -o boot.o
