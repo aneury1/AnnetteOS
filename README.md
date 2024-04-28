@@ -46,8 +46,13 @@ make install
 
 ###  Build GCC
 for example im build 13.2.0
+```sh
 configure --prefix=$PREFIX --target=$TARGET --disable-nls --enable-languages=c,c++ --without-headers --enable-interwork            --enable-multilib --with-gmp=/usr --with-mpc=/opt/local --with-mpfr=/opt/local
+or 
+# this is the one I used to build the cross compiler in this example.
+../gcc-x.y.z/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c,c++ --without-headers
 
+```
 
 #### using GCC 
 remember to use this always, unless you change the sample setup.
@@ -68,7 +73,7 @@ https://wiki.osdev.org/Cross-Compiler_Successful_Builds
 ### What next?
 
 there would be a lot of things to do.
-- try to run a simple boot loader.
+- try to run a simple boot loader. 1
 
-##### bootloader type bare bones...
+##### bootloader type bare bones... 1
 
