@@ -75,5 +75,23 @@ https://wiki.osdev.org/Cross-Compiler_Successful_Builds
 there would be a lot of things to do.
 - try to run a simple boot loader. 1
 
-##### bootloader type bare bones... 1
+##### Install Real Hardware and test it...
 
+run:
+```
+make install
+```
+if it is the first time you do it, edit the Grub.cfg file locate at /boot/grub/grub.cfg
+
+locate the end timeout secuence.. and add the next entry, be carefully not delete something or create a backup...
+```
+#### Begin Annette.bin
+
+menuentry 'AnnetteOS v0.0.1'{
+    multiboot /boot/annette.bin
+    boot
+}
+
+#### END EDITION OF ANNETTE.BIN
+
+```
