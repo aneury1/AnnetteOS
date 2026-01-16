@@ -30,3 +30,10 @@
 *.iso 
 
 cross/
+build-cross/
+build/
+cross/
+build-cross/
+llvm-build/
+llvm-source/
+toolchain/
